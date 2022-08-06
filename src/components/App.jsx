@@ -84,11 +84,10 @@ const App = () => {
   return (
     <AppStyles>
       <Searchbar onSubmit={handleInputValue} />
-      {status === Status.PENDING && page === 1 && <Loader />}
       {images.length > 0 && (
         <ImageGallery images={images} onClick={handleShowModal} />
       )}
-      {status === Status.PENDING && page > 1 && <Loader />}
+      {status === Status.PENDING && <Loader />}
       {status === Status.RESOLVED && page < totalPages && (
         <Button onClick={handleLoadMoreButtonClick} status={status} />
       )}

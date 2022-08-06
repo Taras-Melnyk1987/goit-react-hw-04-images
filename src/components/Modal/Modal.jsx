@@ -7,13 +7,13 @@ const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ src, title, onClose }) => {
 
-  const onEscClick = e => {
+  /*const onEscClick = e => {
     if (e.code === 'Escape') {
       onClose();
     }
 
     console.log(e.code);
-  };
+  };*/
 
   const onOverlayClick = e => {
     if (e.currentTarget === e.target) {
@@ -22,12 +22,18 @@ const Modal = ({ src, title, onClose }) => {
   };
 
   useEffect(() => {
+    const onEscClick = e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
+
     window.addEventListener('keydown', onEscClick);
 
     return () => {
       window.removeEventListener('keydown', onEscClick);
     };
-  });
+  }, [onClose]);
 
   return createPortal(
     <Overlay onClick={onOverlayClick}>
@@ -42,6 +48,7 @@ const Modal = ({ src, title, onClose }) => {
 Modal.propTypes = {
   src: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  onEscClick: PropTypes.string.isRequired,
 };
 
 export default Modal;

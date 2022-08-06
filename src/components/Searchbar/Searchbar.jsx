@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
 import { MdOutlineSearch } from 'react-icons/md';
 import {
@@ -21,7 +22,7 @@ export default function Searchbar({ onSubmit }) {
       return;
     }
     onSubmit(searchQuery);
-    setSearchQuery('');
+    //setSearchQuery('');
   };
   const handleInputChange = e => {
     setSearchQuery(e.currentTarget.value.toLowerCase().trim());
@@ -43,4 +44,8 @@ export default function Searchbar({ onSubmit }) {
       </SearchForm>
     </SearchbarStyles>
   );
+};
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.string.isRequired,
 }
