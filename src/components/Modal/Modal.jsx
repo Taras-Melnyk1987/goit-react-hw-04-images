@@ -48,7 +48,7 @@ const Modal = ({ src, title, onClose }) => {
 Modal.propTypes = {
   src: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  onEscClick: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default Modal;
